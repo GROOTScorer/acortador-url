@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+.Nav{
+    background-color: rgba(28,28,28,0.9);
+    padding: 15px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.github{
+    float: right;
+    opacity: 0.5;
+    transition: 1s;
+    filter: invert(100%);
+    -webkit-filter: invert(100%);
+    margin: 0px 30px 0px 30px;
+  }
+  
+  .github:hover{
+    opacity: 1;
+  }
+
+input{
+    height: 20px;
+    align-self: center;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgb(251, 255, 255);
+    font-size: 15px;
+}
+
+nav .navul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+nav > .navul > li{
+    margin-right: 10px;
+    padding: 3px;
+    border: solid rgb(251, 255, 255);
+    border-radius: 20px;
+    transform: translate(-50px);
+    transition: 0.5s;
+}
+
+nav > .navul > li:hover{
+    background-color: #99999999;
+}
+
+nav a{
+    color: rgb(251, 255, 255);
+    text-decoration: none;
+}
