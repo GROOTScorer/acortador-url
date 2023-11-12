@@ -1,31 +1,15 @@
-import { useEffect } from 'react';
-import './App.css';
-import Navegador from './Navegador';
-
-function Titulo() {
-  useEffect(() => {
-    document.title = 'Short-Link';
-  }, []);
-}
+import Navegador from './Navegador.js';
+import Main from './Main.js';
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <>
-    <div className="Container">
-      <Titulo />
-    <Navegador />
-    <label htmlFor="link">Link:</label>
-    <input type="text" name="link" id="idlink" />
-
-    <br/>
-    
-    <button name="Boton1" id="IdBoton1">Recargar</button> <button name="Boton2" id="IdBoton2">Recortar</button>
-    <h3>Short-Link</h3>
-
-    <label htmlFor="url">URL:</label>
-    <input type="text" name="URL" id="idurl" />
-
-    </div>
+          <Navegador />
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/Navegador" element={<Navegador />} />
+      </Routes>
 
     </>
   );
