@@ -6,7 +6,7 @@ function App() {
     <>
     <div className="Container">
     <Navegador />
-    <label for="link">Link:</label>
+    <label htmlFor="link">Link:</label>
     <input type="text" name="link" id="idlink" />
 
     <br/>
@@ -14,7 +14,7 @@ function App() {
     <button name="Boton1" id="IdBoton1">Recargar</button> <button name="Boton2" id="IdBoton2">Recortar</button>
     <h3>Short-Link</h3>
 
-    <label for="url">URL:</label>
+    <label htmlFor="url">URL:</label>
     <input type="text" name="URL" id="idurl" />
 
     </div>
