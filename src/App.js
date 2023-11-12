@@ -1,10 +1,18 @@
+import { useEffect } from 'react';
 import './App.css';
 import Navegador from './Navegador';
+
+function Titulo() {
+  useEffect(() => {
+    document.title = 'Short-Link';
+  }, []);
+}
 
 function App() {
   return (
     <>
     <div className="Container">
+      <Titulo />
     <Navegador />
     <label htmlFor="link">Link:</label>
     <input type="text" name="link" id="idlink" />
