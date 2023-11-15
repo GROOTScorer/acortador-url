@@ -1,21 +1,54 @@
+import React, { useState } from 'react';
 import './Main.css';
 
 function Main() {
+  const [url, setUrl] = useState('');
+  const [shortUrl, setShortUrl] = useState('');
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await fetch('http://localhost:8000/createshorturl', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ url }),
+      });
+
+      if (!response.ok) {
+        throw new Error('La solicitud falló');
+      }
+
+      const data = await response.json();
+      setShortUrl(data.shortUrl);
+    } catch (error) {
+      console.error('Error al acortar la URL:', error);
+    }
+  };
+
+
   return (
     <>
     <div className='Home'>
       <div className="Container">
-      <label htmlFor="link">Link:</label>
-      <input type="text" name="link" id="idlink" />
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="link">Link:</label>
+        <input
+          type="text"
+          placeholder="Ingresa la URL aquí"
+          value={url}
+          onChange={(e) => setUrl(e.target.value)}
+        />
+        <br/>
+        <button type="submit">Recortar</button>
+      </form>
 
-      <br/>
-      
-      <button name="Boton1" id="IdBoton1">Recargar</button> <button name="Boton2" id="IdBoton2">Recortar</button>
-      <h3>Short-Link</h3>
-
-      <label htmlFor="url">URL:</label>
-      <input type="text" name="URL" id="idurl" />
-
+      {shortUrl && (
+        <p>
+          URL Acortada: <a href={shortUrl} target="_blank" rel="noopener noreferrer">{shortUrl}</a>
+        </p>
+      )}
       </div>
       <footer>Creado por: Gael De Luca - Joaquín Pocovi - Mateo Villegas - Matías Zaracho</footer>
     </div>

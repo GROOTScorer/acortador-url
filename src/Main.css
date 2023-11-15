@@ -9,7 +9,8 @@ body {
 }
 
 label, input, button, h3 {
-  margin: 10px; 
+  margin: 10px;
+  font-family: 'Montserrat', sans-serif;
 }
 
 label {
@@ -33,7 +34,7 @@ footer{
   border-radius: 10px;
   margin-top: 100px;
   width: 50%;
-  background-color: white;
+  background-color: #eeeeee;
   font-family: 'Montserrat', sans-serif;
 }
 
