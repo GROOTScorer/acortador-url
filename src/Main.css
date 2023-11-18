@@ -17,9 +17,20 @@ label {
   text-align: right;
 }
 
+input{
+  border-radius: 10px;
+  border: solid 2px grey;
+}
+
 button{
   font-family: 'Montserrat', sans-serif;
-  transition: 0.75s;
+  transition: 0.5s;
+  background-color: rgb(70, 90, 255);
+  color: white;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  width: 150px;
+  height: 30px;
 }
 
 footer{
@@ -30,9 +41,13 @@ footer{
 }
 
 .Container{
-  border: solid #aaaaaa 5px;
+  display: flex;
+  justify-content: center;
+  border: solid #aaaaaa 1px;
   border-radius: 10px;
   margin-top: 100px;
+  margin-left: auto;
+  margin-right: auto;
   width: 50%;
   background-color: #eeeeee;
   font-family: 'Montserrat', sans-serif;
@@ -40,6 +55,5 @@ footer{
 
 button:hover{
   cursor: pointer;
-  filter: invert(5%);
-  -webkit-filter: invert(5%);
+  background-color: blue;
 }
