@@ -1,5 +1,6 @@
 import Navegador from './Navegador.js';
 import Main from './Main.js';
+import Biblioteca from './Biblioteca.js';
 import { Routes, Route } from "react-router-dom";
 import { useEffect } from 'react';
 
@@ -17,6 +18,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/Navegador" element={<Navegador />} />
+        <Route path="/Biblioteca" element={<Biblioteca />} />
       </Routes>
 
     </>

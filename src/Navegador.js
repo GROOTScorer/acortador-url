@@ -9,7 +9,7 @@ function Navegador() {
       <nav>
         <Link to='/'>Short-Link</Link>
         <ul className="navul">
-          <li className="crear"><Link to='/'>Contacto</Link></li>
+          <li className="crear"><Link to='/Biblioteca'>Biblioteca</Link></li>
 
           <a href="https://github.com/GROOTScorer/acortador-url"><img alt="" className='github' width="25px" height="25px" title="Repositorio" src="https://cdn-icons-png.flaticon.com/256/25/25231.png"></img></a>
         </ul>
