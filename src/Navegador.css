@@ -48,8 +48,9 @@ nav .navul{
 nav > .navul > li{
     margin-right: 10px;
     padding: 3px;
-    border: solid rgb(251, 255, 255);
+    height: 20px;
     border-radius: 20px;
+    cursor: pointer;
     transform: translate(-50px);
     transition: 0.5s;
 }
