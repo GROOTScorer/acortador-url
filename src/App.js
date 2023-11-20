@@ -1,30 +1,45 @@
+import React, { useState, useEffect } from 'react';
 import Navegador from './Navegador.js';
 import Main from './Main.js';
 import Biblioteca from './Biblioteca.js';
 import Registro from './Registro.js';
 import Login from './Login.js';
-import { Routes, Route } from "react-router-dom";
-import { useEffect } from 'react';
+import { Routes, Route, Navigate } from "react-router-dom";
 
-function Titulo() {
+function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   useEffect(() => {
     document.title = 'Short-Link';
   }, []);
-}
 
-function App() {
+  function handleLogin()
+  {
+    setIsLoggedIn(true);
+  };
+
+  function handleLogout()
+  {
+    setIsLoggedIn(false);
+  };
+
   return (
     <>
-      <Navegador />
-      <Titulo />
+      <Navegador isLoggedIn={isLoggedIn} onLogout={handleLogout} />
       <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/Navegador" element={<Navegador />} />
-        <Route path="/Biblioteca" element={<Biblioteca />} />
-        <Route path='/Registro' element={<Registro />} />
-        <Route path='/Login' element={<Login />} />
+      <Route path="/" element={<Main isLoggedIn={isLoggedIn} />} />
+        {isLoggedIn ? (
+          <>
+            <Route path="/Biblioteca" element={<Biblioteca />} />
+          </>
+        ) : (
+          <>
+            <Route path="/Biblioteca" element={<Navigate to="/Login" />} />
+          </>
+        )}
+        <Route path="/Registro" element={<Registro />} />
+        <Route path="/Login" element={<Login onLogin={handleLogin} />} />
       </Routes>
-
     </>
   );
 }
