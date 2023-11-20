@@ -1,12 +1,35 @@
 import React, { useState } from 'react';
 import './Entrar.css';
 
-function Login() {
+function Login({ onLogin }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [message, setMessage] = useState('');
 
-  const handleSubmit = (event) => {
+  async function handleSubmit(event)
+  {
     event.preventDefault();
+    setMessage('');
+
+    try {
+      const response = await fetch('http://localhost:8000/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || 'Error al iniciar sesión');
+      }
+
+      onLogin();
+      setMessage('Inicio de sesión exitoso');
+    } catch (error) {
+      setMessage(error.message);
+    }
   };
 
   return (
@@ -17,6 +40,7 @@ function Login() {
         <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Contraseña" />
         <br />
         <button type="submit">Iniciar sesión</button>
+        {message && <p>{message}</p>}
       </form>
     </div>
   );
