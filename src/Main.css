@@ -15,6 +15,8 @@ label, input, button, h3 {
 
 label {
   text-align: right;
+  display: inline-block;
+  width: 90px;
 }
 
 input{
@@ -43,6 +45,7 @@ footer{
 .Container{
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   border: solid #aaaaaa 1px;
   border-radius: 10px;
   margin-top: 100px;
@@ -51,6 +54,11 @@ footer{
   width: 50%;
   background-color: #eeeeee;
   font-family: 'Montserrat', sans-serif;
+}
+
+.noLog{
+  color: red;
+  font-size: 12px;
 }
 
 button:hover{
