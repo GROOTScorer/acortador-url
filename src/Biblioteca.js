@@ -1,4 +1,4 @@
-import './Biblioteca.css'
+import './Biblioteca.css';
 import React, { useState, useEffect } from 'react';
 
 function Biblioteca()
@@ -22,19 +22,31 @@ function Biblioteca()
     fetchLatestUrls();
   }, []);
 
+  async function Copiar(url)
+  {
+    try {
+      await navigator.clipboard.writeText(url);
+      alert("URL copiada al portapapeles: " + url);
+    } catch (error) {
+      console.error('Error al copiar URL:', error);
+    }
+  };
+
   return (
     <>
-        <h2 className='bibheader'>URLs Acortadas</h2>
-            <div className="table-container">
-            {urls.map(url => (
-              <section className='card'>
-              <p className='shorturl' key={url.shortUrl}><a key={url.shortUrl} href={url.shortUrl}>{url.shortUrl}</a></p>
-              <p className='originalurl' key={url.originalUrl}><a key={url.originalUrl} href={url.originalUrl}>{url.originalUrl}</a></p>
-            </section>
+      <h2 className='bibheader'>URLs Acortadas</h2>
+      <div className="table-container">
+        {urls.map((url, index) => (
+          <section className='card' key={index}>
+            <p className='shorturl'><a href={url.shortUrl}>{url.shortUrl}</a></p>
+            <button onClick={() => Copiar(url.shortUrl)}>Copiar URL</button>
+            <p className='originalurl'><a href={url.originalUrl}>{url.originalUrl}</a></p>
+            <p className='descripcion'>{url.descripcion}</p>
+          </section>
         ))}
-            </div>
+      </div>
     </>
-    );
+  );
 }
 
 export default Biblioteca;
