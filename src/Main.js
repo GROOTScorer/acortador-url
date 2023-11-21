@@ -5,6 +5,9 @@ import './Main.css';
 function Main(props) {
   const [shortUrl, setShortUrl] = useState('');
   const [descripcionRecibida, setDescripcionRecibida] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const esUrlValida = (url) => /^https?:\/\//.test(url);
 
   async function handleSubmit(event)
   {
@@ -12,6 +15,11 @@ function Main(props) {
     const formData = new FormData(event.target);
     const url = formData.get('url');
     const descripcion = formData.get('descripcion');
+
+    if (!esUrlValida(url)) {
+      setErrorMessage('Por favor, ingresa una URL que comience con http:// o https://');
+      return;
+    }
 
     try {
       const response = await fetch('http://localhost:8000/createshorturl', {
@@ -29,9 +37,11 @@ function Main(props) {
       const data = await response.json();
       setShortUrl(data.shortUrl);
       setDescripcionRecibida(data.descripcion);
+      setErrorMessage('');
       event.target.reset();
     } catch (error) {
       console.error('Error al acortar la URL:', error);
+      setErrorMessage(error.message);
     }
   };
 
@@ -54,6 +64,7 @@ function Main(props) {
               placeholder="Ingresa la URL"
             />
             <br/>
+            {errorMessage && <p className="error">{errorMessage}</p>}
             <label htmlFor="descripcion">Descripción:</label>
             <input
               name="descripcion"
