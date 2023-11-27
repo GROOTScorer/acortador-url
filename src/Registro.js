@@ -13,7 +13,7 @@ function Registro({ onLogin }) {
     setMessage('');
 
     try {
-      const registerResponse = await fetch(`${process.env.REACT_APP_SITEURL}/register`, {
+      const registerResponse = await fetch(`http://localhost:8000/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
