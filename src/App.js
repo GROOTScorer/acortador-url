@@ -37,7 +37,7 @@ function App() {
             <Route path="/Biblioteca" element={<Navigate to="/Login" />} />
           </>
         )}
-        <Route path="/Registro" element={<Registro />} />
+        <Route path="/Registro" element={<Registro onLogin={handleLogin} />} />
         <Route path="/Login" element={<Login onLogin={handleLogin} />} />
       </Routes>
     </>
